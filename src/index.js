@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Layout from './components/Layout';
 import './index.css';
 
 function App() {
   return (
-    <div>
-     hello
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    
   );
 }
 
