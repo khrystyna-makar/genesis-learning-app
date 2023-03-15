@@ -24,8 +24,6 @@ header .site-logo {
 
 header a {
   text-decoration: none;
-  color: #4D4D4D;
-  font-weight: 600;
   padding: 5px 20px;
 }
 
@@ -33,7 +31,6 @@ header a:hover {
   color: #161616;
   text-decoration: underline;
 }
-
 
 footer {
   background: #252525;
@@ -48,4 +45,23 @@ footer {
   font-weight: 500;
   font-size: 14px;
   line-height: 23px;
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-tile {
+  padding: 5px;
+  background-color: azure;
+  flex: 1 0 40%;
+}
+
+.course-tile a {
+  text-decoration: none;
+}
+
+.course-tile img {
+  width: 500px;
 }
