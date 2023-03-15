@@ -11,8 +11,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<Courses />} /> 
-          <Route path="courses/:id" element={<CourseDetail />} />
+          <Route index element={<Courses />} />
+          <Route path='courses/:page' element={<Courses />} />
+          <Route path="courses/course/:id" element={<CourseDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
