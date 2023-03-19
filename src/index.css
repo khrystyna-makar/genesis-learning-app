@@ -6,6 +6,7 @@ body {
  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(225, 239, 255);
 }
 
 header {
@@ -59,16 +60,18 @@ footer {
 .course-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   flex-basis: 0;
 }
 
 .course-tile {
   padding: 5px;
-  background-color: azure;
+  background-color: white;
   flex: 1 0 30%;
   flex-basis: 0;
-  max-width: 530px;
+  max-width: 510px;
+  border: solid #9acfed 2px;
+  border-radius: 5px;
 }
 
 .course-tile a {
@@ -78,11 +81,13 @@ footer {
 
 .course-tile img {
   width: 500px;
+  border-radius: 5px;
 }
 
 .flex {
   display: flex;
-  margin-block: 15px;
+  margin-block: 10px;
+  align-items: baseline;
 }
 
 .flex p {
@@ -126,11 +131,19 @@ footer {
   align-items: center;
 }
 
+#tile:hover {
+  -webkit-transform: scale(1.03);
+	transform: scale(1.03);
+}
+
 #tile:hover video {
   opacity: 100;
 }
 #tile:hover img {
   opacity: 0;
+}
+#tile:hover .not-hide {
+  opacity: 100;
 }
 
 /* Course Detail */

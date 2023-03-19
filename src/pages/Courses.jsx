@@ -32,9 +32,9 @@ export default function Courses() {
         getCourses().then(res => {
             console.log(res);
             setCourses(res);
-        }) .catch(err => {
+        }).catch(err => {
             console.log("catch " + err.message)
-        }) .finally(() => setIsLoading(false))
+        }).finally(() => setIsLoading(false))
     }, [])
 
     const coursesCountPerPage = 10;
@@ -47,20 +47,24 @@ export default function Courses() {
         ).slice(index, index + coursesCountPerPage)
 
     const handleOnMouseOver = (e, i) => {
-       // e.target.play()
-        videoRefs.current[i].current.play()
+        videoRefs.current[i].current && videoRefs.current[i].current.play();
     }
 
     const handleOnMouseOut = (e, i) => {
-        videoRefs.current[i].current.pause()
-        videoRefs.current[i].current.currentTime = 0
+        if( videoRefs.current[i].current) {
+            videoRefs.current[i].current.pause()
+            videoRefs.current[i].current.currentTime = 0
+        }
     } 
 
     const courseElements = coursesPage.map((course, i) => {
         const imageLink = course.previewImageLink + '/cover.webp'
         const skills = course.meta.skills && course.meta.skills.map((skill) =>
-                <li key={skill}>{skill}</li>
-                );
+            <div className="flex">
+                <span style={{alignSelf:'center'}} className="material-icons"> done  </span>
+                <li style={{listStyle: 'none'}} key={skill}>{skill}</li>
+            </div>
+            );
         return (
             <div key={course.id} className="course-tile" id='tile' 
                 onMouseOver={(e) => handleOnMouseOver(e, i)}
@@ -68,8 +72,8 @@ export default function Courses() {
             >
              <Link to={'/courses/course/' + course.id} state={{page: currentPage}} >
                 <div id="wrapper" >
-                    <img src={imageLink} alt='' />
-                    <ReactHlsPlayer
+                    <img src={imageLink} alt='' className={course.meta.courseVideoPreview ? '' : 'not-hide'} />
+                   { course.meta.courseVideoPreview && <ReactHlsPlayer
                         src={course.meta.courseVideoPreview?.link}
                         autoPlay={false}
                         loop
@@ -78,7 +82,7 @@ export default function Courses() {
                         width='400px'
                         height="auto" 
                         playerRef={videoRefs.current[i]}
-                    />
+                    /> }
                 </div>
                 <div className="course-info">
                     <h3>{course.title}</h3>

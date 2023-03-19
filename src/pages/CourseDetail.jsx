@@ -95,7 +95,7 @@ export default function CourseDetail() {
             <h1>{course.title}</h1>
 
             <ReactHlsPlayer
-                src={course.meta.courseVideoPreview.link}
+                src={course.meta.courseVideoPreview?.link}
                 autoPlay={false}
                 controls={true}
                 width="50%"
