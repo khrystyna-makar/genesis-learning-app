@@ -54,6 +54,21 @@ export default function CourseDetail() {
         setOpen(false);
       };
 
+    const handleKeyUp = (e) => {
+        console.log("key")
+        if (e.shiftKey  && e.key === '>') {
+            if( lessonPlayer.current.playbackRate < 2) {
+                lessonPlayer.current.playbackRate += 0.25;
+            }
+            console.log(lessonPlayer.current.playbackRate)
+        } else if (e.shiftKey  && e.key === '<') {
+            if( lessonPlayer.current.playbackRate > 0.25) {
+                lessonPlayer.current.playbackRate -= 0.25;
+            }
+            console.log(lessonPlayer.current.playbackRate)
+        }
+    }
+
     const lessons = course.lessons.sort((item1, item2) => item1.order - item2.order).map((lesson) =>
             <Link key={lesson.id} onClick={(e) => openLesson(e, lesson)} className={lesson.status === 'locked' ? 'link-disabled' : ''}>
                 <div title={lesson.status === 'locked' ? 'This lesson is locked' : ''}>
@@ -63,7 +78,8 @@ export default function CourseDetail() {
                     } 
                     <span>{lesson.order + '.'} &nbsp; </span>
                     <span>{lesson.title}</span>
-                    <span style={{color: '#666666'}}> &nbsp; {lesson.progress ?? 0}%</span>
+                   {// <span style={{color: '#666666'}}> &nbsp; {lesson.progress ?? 0}%</span>
+                    }
                     <span className="duration">{convertDuration(lesson.duration)}</span>  
                 </div>
             </Link>     
@@ -97,10 +113,11 @@ export default function CourseDetail() {
                 open={open}
             >
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                 {'Lesson ' + currentLesson?.order + '. '}{currentLesson?.title}
+                    {'Lesson ' + currentLesson?.order + '. '}{currentLesson?.title}
                 </DialogTitle>
                 <DialogContent dividers>
                     <ReactHlsPlayer
+                        onKeyUp={(e) => handleKeyUp(e)}
                         src={currentLesson?.link}
                         playerRef={lessonPlayer}
                         autoPlay={false}
@@ -108,9 +125,11 @@ export default function CourseDetail() {
                         width="100%"
                         height="auto" 
                         hlsConfig={{
-                            startPosition: currentLesson?.progress 
+                            startPosition: currentLesson?.progress
                           }}
                     />
+                    <pre>Decrease playback rate  &#60; (SHIFT+,)</pre> 
+                    <pre>Increase playback rate  &#62; (SHIFT+.)</pre> 
                 </DialogContent>
             </Dialog>
 
