@@ -7,7 +7,7 @@ export default function Error() {
 
     return (
         <section className='container'>   
-            <h1>Error: {error.message}</h1>
+            <h1 style={{color: 'red'}}>Error: {error.message}</h1>
             <pre>{error.status} - {error.statusText}</pre>
         </section>
     )

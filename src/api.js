@@ -32,7 +32,6 @@ export async function getCourses() {
         }
     }
     const data = await res.json()
-    console.log(data)
     return data.courses
 }
 
@@ -48,6 +47,5 @@ export async function getCourse(courseId) {
         }
     }
     const data = await res.json()
-    console.log(data)
     return data
 }

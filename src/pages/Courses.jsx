@@ -60,9 +60,9 @@ export default function Courses() {
     const courseElements = coursesPage.map((course, i) => {
         const imageLink = course.previewImageLink + '/cover.webp'
         const skills = course.meta.skills && course.meta.skills.map((skill) =>
-            <div className="flex">
+            <div className="flex" key={skill}>
                 <span style={{alignSelf:'center'}} className="material-icons"> done  </span>
-                <li style={{listStyle: 'none'}} key={skill}>{skill}</li>
+                <li style={{listStyle: 'none'}} >{skill}</li>
             </div>
             );
         return (

@@ -5,7 +5,7 @@ import { Route, RouterProvider,
   createRoutesFromElements } from 'react-router-dom'
 import Layout from './components/Layout';
 import Courses from './pages/Courses'
-import CourseDetail from './pages/CourseDetail';
+import CourseDetail, {loader as courseDetailLoader} from './pages/CourseDetail';
 import Error from './components/Error';
 import './index.css';
 
@@ -15,7 +15,7 @@ function App() {
     <Route path='/' element={<Layout />} errorElement={<Error />} >
       <Route index element={<Courses />} errorElement={<Error />} />
       <Route path='courses/:page' element={<Courses />} errorElement={<Error />} />
-      <Route path="courses/course/:id" element={<CourseDetail />} errorElement={<Error />}/>
+      <Route path="courses/course/:id" element={<CourseDetail />} loader={courseDetailLoader} errorElement={<Error />}/>
     </Route>
   ))
 
