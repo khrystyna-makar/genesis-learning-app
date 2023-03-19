@@ -23,7 +23,6 @@ export async function getCourses() {
     console.log(header)
    
     const res = await fetch("/api/v1/core/preview-courses", {headers: header}) 
-    // new Response(400, {}, {error: "Error fetching data"})
     if(!res.ok) {
         throw {
             message: "Failed to fetch courses",
