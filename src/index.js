@@ -1,23 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import { Route, RouterProvider, 
+  createBrowserRouter, 
+  createRoutesFromElements } from 'react-router-dom'
 import Layout from './components/Layout';
 import Courses from './pages/Courses'
 import CourseDetail from './pages/CourseDetail';
+import Error from './components/Error';
 import './index.css';
 
 function App() {
+
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route path='/' element={<Layout />} errorElement={<Error />} >
+      <Route index element={<Courses />} errorElement={<Error />} />
+      <Route path='courses/:page' element={<Courses />} errorElement={<Error />} />
+      <Route path="courses/course/:id" element={<CourseDetail />} errorElement={<Error />}/>
+    </Route>
+  ))
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Courses />} />
-          <Route path='courses/:page' element={<Courses />} />
-          <Route path="courses/course/:id" element={<CourseDetail />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    
+    <RouterProvider router={router} /> 
   );
 }
 

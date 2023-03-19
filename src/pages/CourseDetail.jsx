@@ -36,13 +36,14 @@ export default function CourseDetail() {
 
     if(!course) {
         return (
-            <h1>Loading...</h1>
+            <div className="container">
+                 <h1>Loading...</h1>
+            </div>
         )
     }
 
     const openLesson = (e, lesson) => {
-        e.preventDefault();
-        
+        e.preventDefault();    
         lesson.progress = Math.ceil(localStorage.getItem(lesson?.id) ?? 0) ; 
         setCurrentLesson(lesson)  
         setOpen(true);
@@ -53,7 +54,7 @@ export default function CourseDetail() {
         setOpen(false);
       };
 
-    const lessons = course.lessons.sort(l => l.order).map((lesson) =>
+    const lessons = course.lessons.sort((item1, item2) => item1.order - item2.order).map((lesson) =>
             <Link key={lesson.id} onClick={(e) => openLesson(e, lesson)} className={lesson.status === 'locked' ? 'link-disabled' : ''}>
                 <div title={lesson.status === 'locked' ? 'This lesson is locked' : ''}>
                     {

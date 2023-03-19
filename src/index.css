@@ -60,12 +60,15 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  flex-basis: 0;
 }
 
 .course-tile {
   padding: 5px;
   background-color: azure;
-  flex: 1 0 40%;
+  flex: 1 0 30%;
+  flex-basis: 0;
+  max-width: 530px;
 }
 
 .course-tile a {
@@ -79,6 +82,22 @@ footer {
 
 .flex {
   display: flex;
+  margin-block: 15px;
+}
+
+.flex p {
+  margin-block: 0;
+}
+
+.flex ul {
+  margin-block: 0;
+}
+
+.lessonsCount {
+  margin-left: auto;
+  margin-right: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .rating {
@@ -88,6 +107,33 @@ footer {
     font-weight: 500;
     padding-right: 5px;
 }
+#wrapper {
+  position: relative;
+}
+#wrapper video {
+  position: absolute;
+  top:0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  object-fit: cover;
+/*  min-width: 100%; */
+ /* min-height: 100%; */
+  z-index: 10;
+}
+#wrapper img {
+  display: flex;
+  align-items: center;
+}
+
+#tile:hover video {
+  opacity: 100;
+}
+#tile:hover img {
+  opacity: 0;
+}
+
+/* Course Detail */
 
 .back-button {
   display: block;
