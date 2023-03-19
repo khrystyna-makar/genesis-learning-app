@@ -38,7 +38,7 @@ export async function getCourses() {
 export async function getCourse(courseId) {
     const header = await preRequestHeader()
 
-    const res = await fetch(`/api/v1/core/preview-courses/:${courseId}`, {headers: header})
+    const res = await fetch(`/api/v1/core/preview-courses/${courseId}`, {headers: header})
     if(!res.ok) {
         throw {
             message: "Failed to fetch course",
