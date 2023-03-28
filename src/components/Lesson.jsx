@@ -6,7 +6,7 @@ export default function Lesson({ lesson, onClick }) {
 
     return (
         <Link key={lesson.id} onClick={onClick} className={lesson.status === 'locked' ? 'link-disabled' : ''}>
-            <div title={lesson.status === 'locked' ? 'This lesson is locked' : ''}>
+            <div>
                 {
                     lesson.status === 'locked' ? <span className="material-icons" style={{ color: '#666666', margin: '0 10px' }} >lock</span> :
                         <span className="material-icons" style={{ color: '#666666', margin: '0 10px' }} >play_circle_outline</span>

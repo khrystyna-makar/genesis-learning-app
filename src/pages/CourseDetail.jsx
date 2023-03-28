@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link, useLocation, useLoaderData, defer, Await } from 'react-router-dom'
 import { getCourse } from '../api'
 import ReactHlsPlayer from 'react-hls-player'
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
 import Lesson from "../components/Lesson";
+import LessonDialogContent from "../components/LessonDialogContent";
+import Dialog from '@mui/material/Dialog';
 
 export function loader({ params }) {
     return defer({ course: getCourse(params.id) })
@@ -14,8 +13,6 @@ export function loader({ params }) {
 export default function CourseDetail() {
     const location = useLocation()
     const page = location.state?.page || 1;
-    const videoPlayer = useRef()
-    const lessonPlayer = useRef()
 
     const data = useLoaderData()
 
@@ -23,7 +20,6 @@ export default function CourseDetail() {
     const [open, setOpen] = React.useState(false);
 
     const openLesson = (e, lesson) => {
-        console.log('open lesson')
         e.preventDefault();
         lesson.progress = Math.ceil(localStorage.getItem(lesson?.id) ?? 0);
         setCurrentLesson(lesson)
@@ -31,28 +27,13 @@ export default function CourseDetail() {
     }
 
     const handleClose = () => {
-        localStorage.setItem(currentLesson?.id, lessonPlayer.current.currentTime);
         setOpen(false);
     };
-
-    const handleKeyUp = (e) => {
-        if (e.shiftKey && e.key === '>') {
-            if (lessonPlayer.current.playbackRate < 2) {
-                lessonPlayer.current.playbackRate += 0.25;
-            }
-            console.log(lessonPlayer.current.playbackRate)
-        } else if (e.shiftKey && e.key === '<') {
-            if (lessonPlayer.current.playbackRate > 0.25) {
-                lessonPlayer.current.playbackRate -= 0.25;
-            }
-            console.log(lessonPlayer.current.playbackRate)
-        }
-    }
 
     function renderCourse(course) {
 
         const lessons = course.lessons.sort((item1, item2) => item1.order - item2.order).map((lesson) =>
-            <Lesson key={lesson.id} onClick={(e) => openLesson(e, lesson)} lesson={lesson}/>
+            <Lesson key={lesson.id} onClick={(e) => openLesson(e, lesson)} lesson={lesson} />
         );
 
         return (
@@ -64,7 +45,6 @@ export default function CourseDetail() {
                     controls={true}
                     width="50%"
                     height="auto"
-                    playerRef={videoPlayer}
                 />
 
                 <p>{course.description}</p>
@@ -73,26 +53,9 @@ export default function CourseDetail() {
 
                 <Dialog
                     onClose={handleClose}
-                    open={open} >
-                    <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                        {'Lesson ' + currentLesson?.order + '. '}{currentLesson?.title}
-                    </DialogTitle>
-                    <DialogContent dividers>
-                        <ReactHlsPlayer
-                            onKeyUp={(e) => handleKeyUp(e)}
-                            src={currentLesson?.link}
-                            playerRef={lessonPlayer}
-                            autoPlay={false}
-                            controls={true}
-                            width="100%"
-                            height="auto"
-                            hlsConfig={{
-                                startPosition: currentLesson?.progress
-                            }}
-                        />
-                        <pre>Decrease playback rate  &#60; (SHIFT+,)</pre>
-                        <pre>Increase playback rate  &#62; (SHIFT+.)</pre>
-                    </DialogContent>
+                    open={open}
+                >
+                    <LessonDialogContent lesson={currentLesson} close={handleClose} />
                 </Dialog>
             </>
         )
