@@ -5,14 +5,7 @@ import ReactHlsPlayer from 'react-hls-player'
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-
-
-function convertDuration(totalSeconds) {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-
-    return `${minutes} min ${seconds} s`;
-}
+import { convertDuration } from "../utilities/utils";
 
 export function loader({params}) {
     return defer({course: getCourse(params.id)})

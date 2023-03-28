@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import {getCourses} from '../api'
 import {Link, useNavigate, useLocation, useLoaderData, defer, Await} from 'react-router-dom'
 import Pagination from '@mui/material/Pagination';
