@@ -43,12 +43,13 @@ export default function Courses() {
 
         const courseElements = coursesPage.map((course, i) => {
             return (
-                <CourseTile course={course} videoRef={videoRefs.current[i]} currentPage={currentPage} />
+                <CourseTile key={course.id} course={course} videoRef={videoRefs.current[i]} currentPage={currentPage} />
             )
         })
 
         return (
             <>
+                <Pagination count={pagesCount} page={currentPage} onChange={handlePageChange} />
                 <div className="course-list">
                     {courseElements}
                 </div>

@@ -5,11 +5,11 @@ import ReactHlsPlayer from 'react-hls-player'
 
 export default function CourseTile({ course, videoRef, currentPage }) {
 
-    const handleOnMouseOver = (e, i) => {
+    const handleOnMouseOver = (e) => {
         videoRef.current && videoRef.current.play();
     }
 
-    const handleOnMouseOut = (e, i) => {
+    const handleOnMouseOut = (e) => {
         if (videoRef.current) {
             videoRef.current.pause()
             videoRef.current.currentTime = 0
@@ -20,7 +20,7 @@ export default function CourseTile({ course, videoRef, currentPage }) {
 
     const skills = course.meta.skills && course.meta.skills.map((skill) =>
         <div className="flex" key={skill}>
-            <span style={{ alignSelf: 'center' }} className="material-icons"> done  </span>
+            <span style={{ alignSelf: 'center' }} className="material-icons"> done </span>
             <li style={{ listStyle: 'none' }} >{skill}</li>
         </div>
     );

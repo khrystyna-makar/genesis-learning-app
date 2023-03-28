@@ -3,17 +3,15 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
- 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(225, 239, 255);
 }
 
 header {
-  height: 110px;
+  height: 90px;
   display: flex;
   align-items: center;
-  padding-block: 10px;
 }
 
 header .site-logo {
@@ -58,8 +56,10 @@ footer {
 }
 
 .course-list {
+  margin: 10px 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   gap: 20px;
   flex-basis: 0;
 }
@@ -101,31 +101,34 @@ footer {
 .lessonsCount {
   margin-left: auto;
   margin-right: 15px;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .rating {
-    display: inline-flex;
-    align-self: center;
-    color: coral;
-    font-weight: 500;
-    padding-right: 5px;
+  display: inline-flex;
+  align-self: center;
+  color: coral;
+  font-weight: 500;
+  padding-right: 5px;
 }
+
 #wrapper {
   position: relative;
 }
+
 #wrapper video {
   position: absolute;
-  top:0;
+  top: 0;
   left: 50%;
   transform: translate(-50%, 0);
   opacity: 0;
   object-fit: cover;
-/*  min-width: 100%; */
- /* min-height: 100%; */
+  /*  min-width: 100%; */
+  /* min-height: 100%; */
   z-index: 10;
 }
+
 #wrapper img {
   display: flex;
   align-items: center;
@@ -133,15 +136,17 @@ footer {
 
 #tile:hover {
   -webkit-transform: scale(1.03);
-	transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 #tile:hover video {
   opacity: 100;
 }
+
 #tile:hover img {
   opacity: 0;
 }
+
 #tile:hover .not-hide {
   opacity: 100;
 }
@@ -158,8 +163,6 @@ footer {
 .back-button span:hover {
   text-decoration: underline;
 }
-
-
 
 .css-wjh20t-MuiPagination-ul {
   justify-content: center;
