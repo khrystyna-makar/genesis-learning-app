@@ -17,7 +17,7 @@ function App() {
       <Route path='courses/:page' element={<Courses />} loader={coursesLoader} errorElement={<Error />} />
       <Route path="courses/course/:id" element={<CourseDetail />} loader={courseDetailLoader} errorElement={<Error />}/>
     </Route>
-  ))
+  ), {basename: "/genesis-learning-app"})
 
   return (
     <RouterProvider router={router} /> 
