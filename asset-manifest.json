@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/genesis-learning-app/static/css/main.fc0b58a4.css",
-    "main.js": "/genesis-learning-app/static/js/main.80f16335.js",
+    "main.js": "/genesis-learning-app/static/js/main.dee18261.js",
     "index.html": "/genesis-learning-app/index.html",
     "main.fc0b58a4.css.map": "/genesis-learning-app/static/css/main.fc0b58a4.css.map",
-    "main.80f16335.js.map": "/genesis-learning-app/static/js/main.80f16335.js.map"
+    "main.dee18261.js.map": "/genesis-learning-app/static/js/main.dee18261.js.map"
   },
   "entrypoints": [
     "static/css/main.fc0b58a4.css",
-    "static/js/main.80f16335.js"
+    "static/js/main.dee18261.js"
   ]
 }
