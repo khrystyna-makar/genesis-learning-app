@@ -65,13 +65,13 @@ footer {
 }
 
 .course-tile {
-  padding: 5px;
+  padding: 10px;
   background-color: white;
   flex: 1 0 30%;
   flex-basis: 0;
   max-width: 500px;
   border: solid #9acfed 2px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .course-tile a {
@@ -175,6 +175,11 @@ footer {
   border-color: #161616;
   display: flex;
   flex-direction: column;
+  margin: 10px 0 !important;
+}
+
+.lesson div:hover .title {
+  text-decoration: underline;
 }
 
 .lesson div {

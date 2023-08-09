@@ -12,7 +12,7 @@ export default function Lesson({ lesson, onClick }) {
                         <span className="material-icons" style={{ color: '#666666', margin: '0 10px' }} >play_circle_outline</span>
                 }
                 <span>{lesson.order + '.'} &nbsp; </span>
-                <span>{lesson.title}</span>
+                <span className="title">{lesson.title}</span>
                 <span className="duration">{convertDuration(lesson.duration)}</span>
             </div>
         </Link>
