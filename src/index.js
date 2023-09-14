@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, RouterProvider, 
-  createHashRouter, 
+  createBrowserRouter, 
   createRoutesFromElements } from 'react-router-dom'
 import Layout from './components/Layout';
 import Courses, {loader as coursesLoader} from './pages/Courses'
@@ -11,7 +11,7 @@ import './index.css';
 
 function App() {
 
-  const router = createHashRouter(createRoutesFromElements(
+  const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout />} errorElement={<Error />} >
       <Route index element={<Courses />} loader={coursesLoader} errorElement={<Error />} />
       <Route path='courses/:page' element={<Courses />} loader={coursesLoader} errorElement={<Error />} />
